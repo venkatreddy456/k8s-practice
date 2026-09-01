@@ -1,0 +1,50 @@
+1. Create the Pod
+kubectl apply -f multi-container-pod.yaml
+
+2. Check Pod
+kubectl get pods
+
+You should see:
+
+NAME                   READY   STATUS    RESTARTS   AGE
+multi-container-pod    2/2     Running   0          20s
+
+2/2 means both containers are running.
+
+3. Check both containers
+kubectl describe pod multi-container-pod
+
+4. Check Nginx logs
+kubectl logs multi-container-pod -c nginx
+
+5. Check Ubuntu logs
+kubectl logs multi-container-pod -c ubuntu
+
+6. Enter the Nginx container
+kubectl exec -it multi-container-pod -c nginx -- /bin/bash
+
+7. Enter the Ubuntu container
+kubectl exec -it multi-container-pod -c ubuntu -- /bin/bash
+Important concept
+
+A multi-container Pod means multiple containers run inside the same Pod and share:
+
+Same IP address
+Same network
+Same localhost
+Can share volumes
+
+Example architecture:
+
+             Multi-Container Pod
+        ┌──────────────────────────┐
+        │                          │
+        │   Nginx Container        │
+        │   Port: 80               │
+        │                          │
+        │   Ubuntu Container       │
+        │   Background process     │
+        │                          │
+        └──────────────────────────┘
+                    │
+               Same Pod IP

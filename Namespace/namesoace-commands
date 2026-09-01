@@ -1,0 +1,89 @@
+Create Namespace
+kubectl apply -f namespace.yaml
+
+Check Namespace
+kubectl get namespaces
+
+. Create Namespace
+kubectl create namespace devops
+
+Creates a new namespace called devops.
+
+2. List Namespaces
+kubectl get namespaces
+
+Shows all namespaces in the Kubernetes cluster.
+
+3. Short Command
+kubectl get ns
+
+ns is the short form of namespaces.
+
+4. Get Specific Namespace
+kubectl get namespace devops
+
+Displays information about the devops namespace.
+
+5. Describe Namespace
+kubectl describe namespace devops
+
+Shows detailed information about the namespace.
+
+6. Create Namespace Using YAML
+kubectl apply -f namespace.yaml
+
+Creates the namespace using a YAML specification file.
+
+7. Delete Namespace
+kubectl delete namespace devops
+
+Deletes the devops namespace and its resources.
+
+8. Check Pods in Namespace
+kubectl get pods -n devops
+
+Shows Pods running inside the devops namespace.
+
+9. Check All Resources
+kubectl get all -n devops
+
+Shows Pods, Services, Deployments, ReplicaSets, and other supported resources in the namespace.
+
+10. Get Pods from All Namespaces
+kubectl get pods -A
+
+Shows Pods from every namespace.
+
+11. Set Default Namespace
+kubectl config set-context --current --namespace=devops
+
+Sets devops as the default namespace for the current Kubernetes context.
+
+12. Check Current Namespace
+kubectl config view --minify --output 'jsonpath={..namespace}'
+
+Displays the namespace configured for the current context.
+
+13. Create Namespace with Labels
+kubectl create namespace devops --dry-run=client -o yaml
+
+Generates the Namespace YAML without creating it.
+
+14. Export Namespace YAML
+kubectl get namespace devops -o yaml
+
+Displays the Namespace configuration in YAML format.
+
+15. Get Resources in Namespace
+kubectl get pods,svc,deploy -n devops
+
+Shows Pods, Services, and Deployments in the devops namespace.
+
+⭐ Most important for interviews
+kubectl create namespace devops
+kubectl get ns
+kubectl describe ns devops
+kubectl get pods -n devops
+kubectl get all -n devops
+kubectl delete ns devops
+kubectl config set-context --current --namespace=devops
